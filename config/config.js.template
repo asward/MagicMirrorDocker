@@ -1,0 +1,111 @@
+/* Magic Mirror Config Sample
+ *
+ * By Michael Teeuw http://michaelteeuw.nl
+ * MIT Licensed.
+ *
+ * For more information how you can configurate this file
+ * See https://github.com/MichMich/MagicMirror#configuration
+ *
+ */
+
+var config = {
+	address: "0.0.0.0", // Address to listen on, can be:
+	                      // - "localhost", "127.0.0.1", "::1" to listen on loopback interface
+	                      // - another specific IPv4/6 to listen on a specific interface
+	                      // - "", "0.0.0.0", "::" to listen on any interface
+	                      // Default, when address config is left out, is "localhost"
+	port: 8080,
+	ipWhitelist: ["127.0.0.1", "::ffff:127.0.0.1", "::1","192.168.0.0/24"], // Set [] to allow all IP addresses
+	                                                       // or add a specific IPv4 of 192.168.1.5 :
+	                                                       // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.1.5"],
+	                                                       // or IPv4 range of 192.168.3.0 --> 192.168.3.15 use CIDR format :
+	                                                       // ["127.0.0.1", "::ffff:127.0.0.1", "::1", "::ffff:192.168.3.0/28"],
+
+	language: "en",
+	timeFormat: 24,
+	units: "metric",
+
+	modules: [
+		{
+			module: "alert",
+		},
+		{
+			module: "custommodules/MMM-MealPlan",
+			header: "Meal Plan",
+			position: "bottom_left"
+		},
+		{
+			module: "custommodules/MMM-Remote-Refresh",
+		},
+		{
+			module: "updatenotification",
+			position: "top_bar"
+		},
+		{
+			module: "clock",
+			position: "top_left",
+			timezone: "$TZ"
+		},
+		{
+			module: "calendar",
+			header: "Family Calendar",
+			position: "top_left",
+			config: {
+				sliceMultiDayEvents: true,
+				calendars: [
+					{
+					url: "$CALENDAR_URL"
+					},
+				]
+			}
+		},
+		{
+			module: "custommodules/MMM-Announcements",
+			position: "lower_third"
+		},
+		{
+			module: "weather",
+			position: "top_right",
+			config: {
+				type: "current",
+				location: "$OPENWEATHER_LOCATION",
+				locationID: "$OPENWEATHER_LOCATIONID",  //ID from http://bulk.openweathermap.org/sample/; unzip the gz file and find your city
+				apiKey: "$OPENWEATHER_APIKEY",
+				units: "imperial"
+			}
+		},
+		{
+			module: "weather",
+			position: "top_right",
+			config: {
+				type: "forecast",
+				showPrecipitationAmount: true,
+				maxNumberOfDays: 10,
+				maxEntries: 7,
+
+				location: "$OPENWEATHER_LOCATION",
+				locationID: "$OPENWEATHER_LOCATIONID",  //ID from http://bulk.openweathermap.org/sample/; unzip the gz file and find your city
+				apiKey: "$OPENWEATHER_APIKEY",
+				units: "imperial"
+			}
+		},
+		{
+			module: "custommodules/MMM-OctoPi",
+			position: "bottom_right",
+			header: "",
+			config: {
+				url: "$OCTOPI_URL",
+				streamUrl: "$http://192.168.0.5/webcam/?action=stream",
+				maxStreamWidth: 320,
+				maxStreamHeight: 240,
+				showDetailsWhenOffline: false,
+				interactive: false,
+				api_key: "$OCTOPI_APIKEY",
+				}
+		}
+	]
+
+};
+
+/*************** DO NOT EDIT THE LINE BELOW ***************/
+if (typeof module !== "undefined") {module.exports = config;}

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  magicmirror:
+    container_name: magicmirror
+    image: ward/docker-magicmirror:latest
+    environment:
+        TZ: ${TZ}
+    restart: always 
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config:/opt/magic_mirror/config
+      - ./modules:/opt/magic_mirror/modules/custommodules
+    ports:
+      - 8888:8080
+    env_file:
+      - .env
