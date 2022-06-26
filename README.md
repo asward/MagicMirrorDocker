@@ -13,7 +13,7 @@ Customize the `config.js.template` file to your liking. Use a `.env` file to exp
 
 ## Modules
 
-Add modules in folders to this location. Modules will be avaiable as 'custommodules/{module name}' from the config file. Default modules will remain available
+Add modules to a `modules` folder in the root of this project. Modules will be avaiable as 'custommodules/{module name}' from the config file. Default modules will remain available
 
 ## Run Docker
 

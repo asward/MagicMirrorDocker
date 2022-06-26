@@ -1,5 +1,5 @@
 # Custom Modules folder
-modules
+modules/
 config/config.js
 # Logs
 logs
