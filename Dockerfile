@@ -1,4 +1,4 @@
-FROM node:12-buster
+FROM node:18-buster
 
 RUN set -e; \
     apt update; \
@@ -17,7 +17,7 @@ RUN cp -R modules /opt/default_modules
 
 # Copy local config folder as the default in case volume mounting fails
 RUN cp -R config /opt/default_config
-RUN npm install --unsafe-perm --silent
+RUN npm run install-mm
 
 COPY docker-entrypoint.sh ./
 RUN chmod +x ./docker-entrypoint.sh

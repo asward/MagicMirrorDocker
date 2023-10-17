@@ -44,7 +44,7 @@ var config = {
 		{
 			module: "clock",
 			position: "top_left",
-			timezone: "$TZ"
+			timezone: "${TZ}"
 		},
 		{
 			module: "calendar",
@@ -54,7 +54,7 @@ var config = {
 				sliceMultiDayEvents: true,
 				calendars: [
 					{
-					url: "$CALENDAR_URL"
+					url: "${CALENDAR_URL}"
 					},
 				]
 			}
@@ -68,9 +68,9 @@ var config = {
 			position: "top_right",
 			config: {
 				type: "current",
-				location: "$OPENWEATHER_LOCATION",
-				locationID: "$OPENWEATHER_LOCATIONID",  //ID from http://bulk.openweathermap.org/sample/; unzip the gz file and find your city
-				apiKey: "$OPENWEATHER_APIKEY",
+				location: "${OPENWEATHER_LOCATION}",
+				locationID: "${OPENWEATHER_LOCATION}",  //ID from http://bulk.openweathermap.org/sample/; unzip the gz file and find your city
+				apiKey: "${OPENWEATHER_APIKEY}",
 				units: "imperial"
 			}
 		},
@@ -83,9 +83,9 @@ var config = {
 				maxNumberOfDays: 10,
 				maxEntries: 7,
 
-				location: "$OPENWEATHER_LOCATION",
-				locationID: "$OPENWEATHER_LOCATIONID",  //ID from http://bulk.openweathermap.org/sample/; unzip the gz file and find your city
-				apiKey: "$OPENWEATHER_APIKEY",
+				location: "${OPENWEATHER_LOCATION}",
+				locationID: "${OPENWEATHER_LOCATIONID}",  //ID from http://bulk.openweathermap.org/sample/; unzip the gz file and find your city
+				apiKey: "${OPENWEATHER_APIKEY}",
 				units: "imperial"
 			}
 		},
@@ -94,13 +94,13 @@ var config = {
 			position: "bottom_right",
 			header: "",
 			config: {
-				url: "$OCTOPI_URL",
+				url: "${OCTOPI_URL}",
 				streamUrl: "$http://192.168.0.5/webcam/?action=stream",
 				maxStreamWidth: 320,
 				maxStreamHeight: 240,
 				showDetailsWhenOffline: false,
 				interactive: false,
-				api_key: "$OCTOPI_APIKEY",
+				api_key: "${OCTOPI_APIKEY}",
 				}
 		}
 	]
